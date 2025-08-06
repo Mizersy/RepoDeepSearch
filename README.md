@@ -39,6 +39,21 @@ python evaluation/FLEval.py --loc_file <loc_file_path>
 ## Patch Generation Evaluation
 We utilize the official evaluation script provided by the SWE-Bench-Verified, which can be found at https://github.com/SWE-bench/SWE-bench.
 
+## Citation
+
+```bibtex
+@misc{ma2025toolintegratedreinforcementlearningrepo,
+      title={Tool-integrated Reinforcement Learning for Repo Deep Search}, 
+      author={Zexiong Ma and Chao Peng and Qunhong Zeng and Pengfei Gao and Yanzhen Zou and Bing Xie},
+      year={2025},
+      eprint={2508.03012},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2508.03012}, 
+}
+```
+
+
 ## Acknowledgement
 * [Verl](https://github.com/volcengine/verl)
 * [Agentless](https://github.com/OpenAutoCoder/Agentless/tree/main)
