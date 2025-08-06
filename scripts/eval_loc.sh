@@ -1,0 +1,1 @@
+python evaluation/FLEvalNew.py --dataset verified --loc_file <loc_file_path>

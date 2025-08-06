@@ -1,0 +1,69 @@
+tools:
+  - class_name: "verl.tools.get_code_of_class_tool.GetCodeOfClassTool"
+    config: {}
+    tool_schema:
+      type: "function"
+      function:
+        name: "get_code_of_class"
+        description: "A tool for geting the class content of specific file"
+        parameters:
+          type: "object"
+          properties:
+            file_name:
+              type: "string"
+              description: "The full file name"
+            class_name:
+              type: "string"
+              description: "class name"
+          required: ["file_name", "class_name"]
+        strict: true
+  - class_name: "verl.tools.get_code_of_file_function_tool.GetCodeOfFileFunctionTool"
+    config: {}
+    tool_schema:
+      type: "function"
+      function:
+        name: "get_code_of_file_function"
+        description: "A tool for geting the function content of specific file"
+        parameters:
+          type: "object"
+          properties:
+            file_name:
+              type: "string"
+              description: "The full file name"
+            func_name:
+              type: "string"
+              description: "function name"
+          required: ["file_name", "func_name"]
+        strict: true
+  - class_name: "verl.tools.get_code_of_class_function_tool.GetCodeOfClassFunctionTool"
+    config: {}
+    tool_schema:
+      type: "function"
+      function:
+        name: "get_code_of_class_function"
+        description: "A tool for geting the function content of specific class"
+        parameters:
+          type: "object"
+          properties:
+            file_name:
+              type: "string"
+              description: "The full file name"
+            class_name:
+              type: "string"
+              description: "class name"
+            func_name:
+              type: "string"
+              description: "function name"
+          required: ["file_name", "class_name", "func_name"]
+        strict: true
+  - class_name: "verl.tools.exit_tool.ExitTool"
+    config: {}
+    tool_schema:
+      type: "function"
+      function:
+        name: "exit"
+        description: "exit if you have found all the information needed."
+        parameters:
+          type: "object"
+          properties: {}
+          required: []
