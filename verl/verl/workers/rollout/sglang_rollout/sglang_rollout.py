@@ -849,7 +849,7 @@ Note: all the arguments must be filled in."""])
                         _req.state = AsyncRolloutRequestStateEnum.RUNNING
 
         if not finish_reason_type == FinishReasonTypeEnum.LENGTH:
-            from verl.repoSearcher.fl.FL_prompt import location_summary
+            from verl.RepoSearcher.fl.FL_prompt import location_summary
             bug_file_content = deepcopy(_req.messages[1].content.split("I have pre-identified top-5 files that may contain bugs. There stuctures are as follows:\n")[-1].split("The formal parameter 'file_name' takes the value in ")[0])
             final_loc_prompt = location_summary.format(bug_file_list=bug_file_content)
             # print(f"final_loc_prompt: {final_loc_prompt}, len_final_loc_prompt: {len(final_loc_prompt)}, len_remain_prompt: {_req.max_model_len - len(_req.input_ids) - 2000}")

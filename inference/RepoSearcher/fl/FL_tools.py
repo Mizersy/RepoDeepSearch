@@ -1,5 +1,5 @@
-from repoSearcher.util.preprocess_data import extract_structure
-from repoSearcher.util.utils import load_json
+from RepoSearcher.util.preprocess_data import extract_structure
+from RepoSearcher.util.utils import load_json
 import os
 
 

@@ -1,7 +1,7 @@
 import json
 import os
 
-from verl.repoSearcher.util.parse_global_var import parse_global_var_from_code
+from verl.RepoSearcher.util.parse_global_var import parse_global_var_from_code
 
 
 def line_wrap_content(

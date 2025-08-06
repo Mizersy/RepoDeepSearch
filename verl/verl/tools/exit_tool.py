@@ -24,8 +24,8 @@ from .schemas import OpenAIFunctionToolSchema
 
 logger = logging.getLogger(__name__)
 logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
-from verl.repoSearcher.fl.FL_tools import get_code_of_class
-from verl.repoSearcher.fl.FL_prompt import *
+from verl.RepoSearcher.fl.FL_tools import get_code_of_class
+from verl.RepoSearcher.fl.FL_prompt import *
 
 import json
 import logging

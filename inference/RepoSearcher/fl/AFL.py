@@ -4,9 +4,9 @@ from typing import Any
 import json
 from FL_prompt import *
 from FL_tools import *
-from repoSearcher.util.api_requests import num_tokens_from_messages
-from repoSearcher.util.postprocess_data import extract_code_blocks, extract_locs_for_files, extract_func_locs_for_files
-from repoSearcher.util.preprocess_data import (get_repo_files, get_full_file_paths_and_classes_and_functions, correct_file_paths,
+from RepoSearcher.util.api_requests import num_tokens_from_messages
+from RepoSearcher.util.postprocess_data import extract_code_blocks, extract_locs_for_files, extract_func_locs_for_files
+from RepoSearcher.util.preprocess_data import (get_repo_files, get_full_file_paths_and_classes_and_functions, correct_file_paths,
                                       line_wrap_content, transfer_arb_locs_to_locs, show_project_structure,
                                       )
 
@@ -56,7 +56,7 @@ class AFL(FL):
         return extracted_output
 
     def _issue_clarify(self):
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         clarify_msg = bug_report_clarify_prompt.format(problem_statement=self.problem_statement)
         message = [
             {
@@ -95,7 +95,7 @@ class AFL(FL):
     def localize(
             self, max_retry=10, file=None, mock=False
     ) -> tuple[list[str], Any, Any]:
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         max_try = max_retry
         bug_report = bug_report_template_wo_repo_struct.format(problem_statement=self.problem_statement).strip()
         system_msg = location_system_prompt.format(functions=location_tool_prompt, max_try=max_try)
@@ -226,8 +226,8 @@ class AFL(FL):
             temperature: float = 0.0,
             num_samples: int = 1,
     ):
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         self.max_tokens = 4096
         coarse_locs = func_locs
         # file_names = []
@@ -325,7 +325,7 @@ class AFL(FL):
     ) -> tuple[list[str], Any, Any]:
         # lazy import, not sure if this is actually better?
 
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         max_try = max_retry
         all_files = get_all_of_files(self.instance_id)
         # clarified_issue = self._issue_clarify()
@@ -391,8 +391,8 @@ class AFL(FL):
         )
 
     def file_localize(self, max_retry=10, mock=False):
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         all_files = get_all_of_files(self.instance_id)
         # bug_report = bug_report_template.format(problem_statement=self.problem_statement,
         #                                         structure=all_files.strip())
@@ -496,7 +496,7 @@ class AFL(FL):
             self, max_retry=10, file=None, mock=False
     ) -> tuple[list[str], Any, Any]:
         func_loc_trajs = []
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         max_try = max_retry
         bug_report = bug_report_template_wo_repo_struct.format(problem_statement=self.problem_statement).strip()
         system_msg = location_system_prompt.format(functions=location_tool_prompt, max_try=max_try)
@@ -667,7 +667,7 @@ False
             self, max_retry=10, file=None, mock=False
     ) -> tuple[list[str], Any, Any]:
         func_loc_trajs = []
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         max_try = max_retry
         bug_report = bug_report_template_wo_repo_struct.format(problem_statement=self.problem_statement).strip()
         system_msg = location_system_prompt.format(functions=location_tool_prompt, max_try=max_try)
@@ -692,7 +692,7 @@ False
             self, max_retry=10, file=None, mock=False
     ) -> tuple[list[str], Any, Any]:
         func_loc_trajs = []
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         max_try = max_retry
         bug_report = bug_report_template_wo_repo_struct.format(problem_statement=self.problem_statement).strip()
         system_msg = location_system_prompt.format(functions=location_tool_prompt, max_try=max_try)
@@ -861,7 +861,7 @@ If you are confident of the answer, you can call the ```exit()``` function to fi
             self, max_retry=10, file=None, mock=False
     ) -> tuple[list[str], Any, Any]:
         func_loc_trajs = []
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         max_try = max_retry
         bug_report = bug_report_template_wo_repo_struct.format(problem_statement=self.problem_statement).strip()
         system_msg = location_system_prompt_native_function_call
@@ -1056,8 +1056,8 @@ Note: all the arguments must be filled in."""})
 
     def file_localize_with_cosil(self, max_retry=10, mock=False):
         file_loc_trajs = []
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         all_files = get_all_of_files(self.instance_id)
         bug_report = bug_report_template.format(problem_statement=self.problem_statement,
                                                 structure=show_project_structure(self.structure).strip())
@@ -1169,8 +1169,8 @@ Note: all the arguments must be filled in."""})
 
     def file_localize_with_g(self, max_retry=10, mock=False,use_cosil=False):
         file_loc_trajs = []
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         all_files = get_all_of_files(self.instance_id)
         bug_report = bug_report_template.format(problem_statement=self.problem_statement,
                                                 structure=show_project_structure(self.structure).strip())
@@ -1283,8 +1283,8 @@ Note: all the arguments must be filled in."""})
 
     def file_localize_with_native_function_call(self, max_retry=10, mock=False,use_cosil=False):
         file_loc_trajs = []
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         all_files = get_all_of_files(self.instance_id)
         bug_report = bug_report_template.format(problem_statement=self.problem_statement,
                                                 structure=show_project_structure(self.structure).strip())
@@ -1577,8 +1577,8 @@ Note: all the arguments must be filled in."""})
         )
 
     def ablation_file(self, max_retry=10, mock=False):
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         all_files = get_all_of_files(self.instance_id)
         bug_report = bug_report_template.format(problem_statement=self.problem_statement,
                                                 structure=show_project_structure(self.structure).strip())
@@ -1653,7 +1653,7 @@ Note: all the arguments must be filled in."""})
     ) -> tuple[list[str], Any, Any]:
         # lazy import, not sure if this is actually better?
 
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.model import make_model
         bug_report = bug_report_template_wo_repo_struct.format(problem_statement=self.problem_statement).strip()
         system_msg = location_system_prompt_ablation
         bug_file_content = self.consturct_bug_file_list(file)
@@ -1694,8 +1694,8 @@ Note: all the arguments must be filled in."""})
         )
 
     def ablation_refection(self, max_retry=10, mock=False):
-        from repoSearcher.util.api_requests import num_tokens_from_messages
-        from repoSearcher.util.model import make_model
+        from RepoSearcher.util.api_requests import num_tokens_from_messages
+        from RepoSearcher.util.model import make_model
         all_files = get_all_of_files(self.instance_id)
         bug_report = bug_report_template.format(problem_statement=self.problem_statement,
                                                 structure=show_project_structure(self.structure).strip())

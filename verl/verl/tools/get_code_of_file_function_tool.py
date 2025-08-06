@@ -24,8 +24,8 @@ from .schemas import OpenAIFunctionToolSchema
 
 logger = logging.getLogger(__name__)
 logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
-from verl.repoSearcher.fl.FL_tools import *
-from verl.repoSearcher.fl.FL_prompt import *
+from verl.RepoSearcher.fl.FL_tools import *
+from verl.RepoSearcher.fl.FL_prompt import *
 
 import json
 import threading
@@ -183,7 +183,7 @@ class GetCodeOfFileFunctionTool(BaseTool):
 
         file_name = parameters.get("file_name", "")
         func_name = parameters.get("func_name", "")
-        from verl.repoSearcher.fl.FL_tools import get_code_of_file_function
+        from verl.RepoSearcher.fl.FL_tools import get_code_of_file_function
         try:
             search_result = await self.execution_pool.execute.remote(get_code_of_file_function,file_name, func_name, swe_instance_id,repo,base_commit)
             # search_result = await get_code_of_file_function(file_name, func_name, swe_instance_id)

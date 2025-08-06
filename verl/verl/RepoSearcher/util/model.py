@@ -2,7 +2,7 @@ import json
 from abc import ABC, abstractmethod
 from typing import List
 
-from verl.repoSearcher.util.api_requests import create_chatgpt_config, request_chatgpt_engine, create_anthropic_config, request_anthropic_engine, send_request_devgpt, send_request_openapi, chat_vllm_server
+from verl.RepoSearcher.util.api_requests import create_chatgpt_config, request_chatgpt_engine, create_anthropic_config, request_anthropic_engine, send_request_devgpt, send_request_openapi, chat_vllm_server
 
 
 class DecoderBase(ABC):

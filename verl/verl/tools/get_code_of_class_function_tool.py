@@ -24,8 +24,8 @@ from .schemas import OpenAIFunctionToolSchema
 
 logger = logging.getLogger(__name__)
 logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
-from verl.repoSearcher.fl.FL_tools import *
-from verl.repoSearcher.fl.FL_prompt import *
+from verl.RepoSearcher.fl.FL_tools import *
+from verl.RepoSearcher.fl.FL_prompt import *
 
 import json
 import logging
@@ -191,7 +191,7 @@ class GetCodeOfClassFunctionTool(BaseTool):
         file_name = parameters.get("file_name", "")
         class_name = parameters.get("class_name", "")
         func_name = parameters.get("func_name", "")
-        from verl.repoSearcher.fl.FL_tools import get_code_of_class_function
+        from verl.RepoSearcher.fl.FL_tools import get_code_of_class_function
         try:
             search_result = await self.execution_pool.execute.remote(get_code_of_class_function, file_name, class_name, func_name, swe_instance_id, repo, base_commit)
             # search_result = await get_code_of_class_function(file_name, class_name, func_name, swe_instance_id)

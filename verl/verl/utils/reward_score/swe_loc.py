@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import re
-from verl.repoSearcher.util.postprocess_data import extract_code_blocks
+from verl.RepoSearcher.util.postprocess_data import extract_code_blocks
 
 def extract_locs(locs):
     current_file_name = None

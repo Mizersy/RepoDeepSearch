@@ -1,5 +1,5 @@
-from verl.repoSearcher.util.preprocess_data import extract_structure
-from verl.repoSearcher.util.utils import load_json
+from verl.RepoSearcher.util.preprocess_data import extract_structure
+from verl.RepoSearcher.util.utils import load_json
 import os
 
 
@@ -62,7 +62,7 @@ def load_repo_structure(instance_id: str, repo: str, base_commit: str):
     assert os.path.exists(PROJECT_FILE_LOC)
     instance_dir = f"{PROJECT_FILE_LOC}/{instance_id}.json"
     if not os.path.exists(instance_dir):
-        from verl.repoSearcher.get_repo_structure import get_project_structure_from_scratch
+        from verl.RepoSearcher.get_repo_structure import get_project_structure_from_scratch
         d = get_project_structure_from_scratch(repo, base_commit, instance_id, "playground")
         import json
         with open(instance_dir, "w") as f:

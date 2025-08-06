@@ -6,12 +6,12 @@ import os
 from datasets import load_dataset, load_from_disk
 from tqdm import tqdm
 
-from repoSearcher.fl.AFL import AFL
-from repoSearcher.util.preprocess_data import (
+from RepoSearcher.fl.AFL import AFL
+from RepoSearcher.util.preprocess_data import (
     filter_none_python,
     filter_out_test_files,
 )
-from repoSearcher.util.utils import (
+from RepoSearcher.util.utils import (
     load_existing_instance_ids,
     load_json,
     load_jsonl,

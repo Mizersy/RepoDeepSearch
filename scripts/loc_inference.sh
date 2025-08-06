@@ -20,7 +20,7 @@ python -m vllm.entrypoints.openai.api_server     --gpu-memory-utilization 0.95  
 sleep 100
 echo "server started...."
 for i in "${!models[@]}"; do
-  python repoSearcher/fl/AFL_localize_file.py --file_level \
+  python RepoSearcher/fl/AFL_localize_file.py --file_level \
                                --output_folder "<output_path>/results/swe-bench-verified/file_level_${models[$i]}_v3_nfc" \
                                --num_threads ${threads} \
                                --model "${model_names[$i]}" \
@@ -33,7 +33,7 @@ done
 
 
 for i in "${!models[@]}"; do
-  python repoSearcher/fl/AFL_localize_func.py \
+  python RepoSearcher/fl/AFL_localize_func.py \
     --output_folder "<output_path>/results/swe-bench-verified/func_level_${models[$i]}_v3_nfc" \
     --loc_file "<output_path>/results/swe-bench-verified/file_level_${models[$i]}_v3_nfc/loc_outputs.jsonl" \
     --output_file "loc_${models[$i]}_func.jsonl" \
